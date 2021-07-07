@@ -87,6 +87,15 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
   },
+  {
+    title: "Caffeine & Nicotine: Powerful Tool or Destructive Vice?",
+    date: "Oct 31st, 2008",
+    firstParagraph: `Yada yada yada yada yada yada yada yada yada yada yada`,
+
+    secondParagraph: `yada yada yada yada yada yada yada yada yada yaday ada`,
+
+    thirdParagraph: `Yabba dabba doo`,
+  },
 ];
 const articles = document.querySelector(".articles");
 /*
@@ -119,13 +128,6 @@ function articleMaker({
   const articleThirdP = document.createElement("p");
   const expand = document.createElement("span");
 
-  article.appendChild(articleTitle);
-  article.appendChild(articleDate);
-  article.appendChild(articleFirstP);
-  article.appendChild(articleSecondP);
-  article.appendChild(articleThirdP);
-  article.appendChild(expand);
-
   article.classList.add("article");
   articleDate.classList.add("date");
   expand.classList.add("expandButton");
@@ -137,9 +139,18 @@ function articleMaker({
   articleTitle.textContent = title;
   articleDate.textContent = date;
   articleFirstP.textContent = firstParagraph;
-  articleSecondP.textcontent = secondParagraph;
+  articleSecondP.textContent = secondParagraph;
   articleThirdP.textContent = thirdParagraph;
   expand.textContent = "+";
+
+  expand.style.fontSize = "2.5rem";
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleFirstP);
+  article.appendChild(articleSecondP);
+  article.appendChild(articleThirdP);
+  article.appendChild(expand);
 
   return article;
 }
@@ -148,16 +159,6 @@ data.forEach((obj) => {
   const article = articleMaker(obj);
   articles.appendChild(article);
 });
-
-const testArticle = articleMaker({
-  title: "test title",
-  date: "2049",
-  firstParagraph: "test test test",
-  secondParagraph: "test test test",
-  thirdParagraph: "test test test",
-});
-
-console.log(testArticle);
 
 /*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
