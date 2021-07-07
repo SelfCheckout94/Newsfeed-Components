@@ -33,36 +33,25 @@ let menuItems = [
 */
 
 const header = document.querySelector(".header");
-
 function menuMaker(arr) {
   const menu = document.createElement("div");
-  const ul = document.createElement("ul");
-
-  menu.classList.add("menu");
-
-  let liArray = arr.map((item) => {
-    console.log(item);
-    let li = document.createElement("li");
-    li.textContent = item;
-    return li;
+  const list = document.createElement("ul");
+  const items = arr.map((obj) => {
+    const item = document.createElement("li");
+    item.textContent = obj;
+    return item;
   });
-  console.log(liArray);
-  menu.appendChild(ul);
-  liArray.forEach((li) => ul.appendChild(li));
-
   const menuButton = document.querySelector("img.menu-button");
 
+  menu.classList.add("menu");
   menuButton.addEventListener("click", () => {
     menu.classList.toggle("menu--open");
   });
 
+  menu.appendChild(list);
+  items.forEach((obj) => list.appendChild(obj));
+
   return menu;
 }
-console.log(header);
-header.appendChild(menuMaker(menuItems));
-console.log(menuMaker(menuItems));
 
-// menuItems.forEach((obj) => {
-//   const items = menuMaker(obj);
-//   header.appendChild(items);
-// });
+header.appendChild(menuMaker(menuItems));

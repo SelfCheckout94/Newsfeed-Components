@@ -97,22 +97,8 @@ const data = [
     thirdParagraph: `Yabba dabba doo`,
   },
 ];
+
 const articles = document.querySelector(".articles");
-/*
-  Step 1: Write a component called 'articleMaker' to create an article.
-  Your component is a function that takes an article object as its only argument,
-  and returns a DOM node looking like the one below:
-
-  <div class="article">
-    <h2>{title of the article}</h2>
-    <p class="date">{date of the article}</p>
-
-    {three separate paragraph elements}
-
-    <span class="expandButton">+</span>
-  </div>
-*/
-
 function articleMaker({
   title,
   date,
@@ -131,7 +117,6 @@ function articleMaker({
   article.classList.add("article");
   articleDate.classList.add("date");
   expand.classList.add("expandButton");
-
   expand.addEventListener("click", () => {
     article.classList.toggle("article-open");
   });
@@ -142,7 +127,6 @@ function articleMaker({
   articleSecondP.textContent = secondParagraph;
   articleThirdP.textContent = thirdParagraph;
   expand.textContent = "+";
-
   expand.style.fontSize = "2.5rem";
 
   article.appendChild(articleTitle);
@@ -159,6 +143,21 @@ data.forEach((obj) => {
   const article = articleMaker(obj);
   articles.appendChild(article);
 });
+
+/*
+Step 1: Write a component called 'articleMaker' to create an article.
+Your component is a function that takes an article object as its only argument,
+and returns a DOM node looking like the one below:
+
+<div class="article">
+<h2>{title of the article}</h2>
+<p class="date">{date of the article}</p>
+
+{three separate paragraph elements}
+
+<span class="expandButton">+</span>
+</div>
+*/
 
 /*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
